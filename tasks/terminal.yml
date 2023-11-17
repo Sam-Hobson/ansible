@@ -14,7 +14,11 @@
     state: present
 
 - name: Make zsh default shell (reboot required)
-  shell: "chsh -s $(which zsh)"
+  ansible.builtin.expect:
+    command: "chsh -s $(which zsh)"
+    responses:
+      'Password: ': '{{ user_pass }}'
+
 
 - name: Install Oh-My-Zsh
   become_user: sam
