@@ -1,5 +1,6 @@
 
 - name: Create (/usr/share/icons/myCustomIcons/) if it doesn't exist
+  become: yes
   file:
     path: "/usr/share/icons/myCustomIcons"
     state: directory
