@@ -1,4 +1,9 @@
 
+- name: Create (/usr/share/icons/myCustomIcons/) if it doesn't exist
+  file:
+    path: "/usr/share/icons/myCustomIcons"
+    state: directory
+
 - name: Bitwarden icon
   become: yes
   get_url:
