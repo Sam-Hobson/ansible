@@ -15,7 +15,7 @@
 - name: Make zsh default shell (reboot required)
   shell: "chsh -s $(which zsh)"
 
-- name: Oh-My-Zsh
+- name: Install Oh-My-Zsh
   shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
   become_user: sam
 
@@ -25,5 +25,14 @@
     dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
 
 
-- name: Install starship terminal prompt
-  shell: curl -sS https://starship.rs/install.sh | sh
+- name: Download starship
+  get_url:
+    url: https://starship.rs/install.sh
+    dest: /tmp/starship_install.sh
+    mode: '0755'
+
+- name: Install starship
+  shell:
+    cmd: /tmp/starship_install.sh --yes
+    executable: /bin/sh
+  become: yes
