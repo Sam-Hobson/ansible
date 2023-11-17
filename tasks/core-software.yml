@@ -12,25 +12,36 @@
     - gettext
     - lua5.4
   when: ansible_pkg_mgr == 'apt'
-  register: package_installation_result
-
-# - name: Log package installation status
-#   debug:
-#     msg: ""
-#   with_items: "{{ package_installation_result.results }}"
-#   when: ansible_pkg_mgr == 'apt'
 
 
 
 - name: Generic system packages
   become: yes
   ansible.builtin.package:
-    name: ["cmake", "lolcat", "exa", "bat", "curl", "htop", "tree", "unzip", "python3", "fzf", "fd-find", "ripgrep", "stow", "parallel", "expect"]
+    name: "{{ item }}"
+  with_items:
+    - cmake
+    - lolcat
+    - exa
+    - bat
+    - curl
+    - htop
+    - tree
+    - unzip
+    - python3
+    - fzf
+    - fd-find
+    - ripgrep
+    - stow
+    - parallel
+    - expect
 
 
 - name: Red hat system packages
   become: yes
   ansible.builtin.package:
-    name: ["lua"]
+    name: "{{ item }}"
+  with_items:
+    - lua
   when: ansible_pkg_mgr == 'yum' or ansible_pkg_mgr == 'dnf'
 
