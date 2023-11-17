@@ -2,7 +2,17 @@
 - name: Apt system packages
   become: yes
   apt:
-    name: ["build-essential", "pkg-config", "libpthread-stubs0-dev", "libtool", "libtool-bin", "gettext", "lua5.4"]
+    name: "{{ item }}"
+  shell: echo installing "{{ item }}"
+  with_items:
+    - build-essential
+    - pkg-config
+    - libpthread-stubs0-dev
+    - libtool
+    - libtool-bin
+    - gettext
+    - lua5.4
+
   when: ansible_pkg_mgr == 'apt'
 
 
