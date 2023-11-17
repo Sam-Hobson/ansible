@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if command -v "ansible-playbook" &> /dev/null; then
+if ! command -v "ansible-playbook" &> /dev/null; then
   if command -v "apt" &> /dev/null; then
     ./ansible-install-apt.sh
   fi
