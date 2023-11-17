@@ -12,13 +12,13 @@
     - gettext
     - lua5.4
   loop_control:
-    loop_var: package_name
+    loop_var: item
   when: ansible_pkg_mgr == 'apt'
   register: package_installation_result
 
 - name: Log package installation status
   debug:
-    msg: "Package '{{ package_name }}' installation status: {{ item.status }}"
+    msg: "Package '{{ item }}' installation status: {{ item.status }}"
   with_items: "{{ package_installation_result.results }}"
   when: ansible_pkg_mgr == 'apt'
 
