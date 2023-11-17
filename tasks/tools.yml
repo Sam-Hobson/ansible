@@ -4,7 +4,7 @@
 - name: Installing packages
   become: yes
   ansible.builtin.package:
-    name: {{ item }}
+    name: "{{ item }}"
   with_items:
     - wireshark
     - xclip
