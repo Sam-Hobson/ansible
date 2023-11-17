@@ -1,0 +1,29 @@
+# TODO: Add fira-code and sauce code pro nerd fonts download
+
+
+- name: Setup kitty terminal emulator
+  become: true
+  ansible.builtin.package:
+    name: "kitty"
+    state: present
+
+- name: Download zsh
+  ansible.builtin.package:
+    name: "zsh"
+    state: present
+
+- name: Make zsh default shell (reboot required)
+  shell: "chsh -s $(which zsh)"
+
+- name: Oh-My-Zsh
+  shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
+  become_user: sam
+
+- name: Install zsh-autosuggestions
+  ansible.builtin.git:
+    repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
+    dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
+
+
+- name: Install starship terminal prompt
+  shell: curl -sS https://starship.rs/install.sh | sh

@@ -1,0 +1,23 @@
+- hosts: localhost
+  vars:
+    source_key: "./.ssh/id_rsa"
+    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
+
+  pre_tasks:
+    - name: Update packages on Debian/Ubuntu
+      ansible.builtin.package:
+        name: "*"
+        state: latest
+        force_apt_get: true
+        update_cache: true
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Update packages on Red Hat
+      ansible.builtin.package:
+        name: "*"
+        state: latest
+        update_cache: yes  # This option is specific to yum/dnf
+      when: ansible_pkg_mgr == 'yum' or ansible_pkg_mgr == 'dnf'
+
+  tasks:
+    - include_tasks: tasks/terminal.yml
