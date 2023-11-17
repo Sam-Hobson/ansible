@@ -20,14 +20,14 @@
     url: https://vault.bitwarden.com/download/?app=desktop&platform=linux
     dest: /usr/bin/bitwarden
     mode: '0755'
-  when: "'Linux' in ansible_distribution"
+  when: "'Linux' in ansible_system"
 
 - name: Check if application profile exists
   become: yes
   stat:
     path: /usr/share/applications/bitwarden.desktop
   register: bitwarden_path
-  when: "'Linux' in ansible_distribution"
+  when: "'Linux' in ansible_system"
 
 - name: Add Bitwarden application profile
   become: yes
@@ -44,4 +44,4 @@
       Type=Application
       Keywords=password;
     create: yes
-  when: "'Linux' in ansible_distribution and not bitwarden_path.stat.exists"
+  when: "'Linux' in ansible_system and not bitwarden_path.stat.exists"
