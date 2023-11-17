@@ -1,9 +1,9 @@
 
-- name: Install system packages and log
+- name: Apt system packages
   become: yes
   apt:
     name: "{{ item }}"
-  loop:
+  with_items:
     - build-essential
     - pkg-config
     - libpthread-stubs0-dev
@@ -11,12 +11,12 @@
     - libtool-bin
     - gettext
     - lua5.4
-  loop_control:
-    loop_var: item
   when: ansible_pkg_mgr == 'apt'
   register: package_installation_result
 
 - name: Log package installation status
+  debug:
+    msg: "Package '{{ item.item }}' installation status: {{ item.status }}"
   with_items: "{{ package_installation_result.results }}"
   when: ansible_pkg_mgr == 'apt'
 
