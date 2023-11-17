@@ -39,7 +39,7 @@
       GenericName=Password Manager
       Comment=Manage your passwords
       Exec=bitwarden
-      # Icon=/usr/share/icons/bitwarden.png
+      Icon=/usr/share/icons/myCustomIcons/bitwarden.png
       Terminal=false
       Type=Application
       Keywords=password;

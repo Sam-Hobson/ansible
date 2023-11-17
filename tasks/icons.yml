@@ -1,0 +1,11 @@
+
+- name: Bitwarden icon
+  become: yes
+  get_url:
+    url: https://github.com/bitwarden/brand/blob/master/icons/128x128.png?raw=true
+    dest: /usr/share/icons/myCustomIcons/bitwarden.png
+    mode: '0755'
+    create: yes
+  when: "'Linux' in ansible_system"
+
+
