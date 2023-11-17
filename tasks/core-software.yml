@@ -16,7 +16,7 @@
 
 - name: Log package installation status
   debug:
-    msg: "Package '{{ item.item }}' installation status: {{ item.status }}"
+    msg: ""
   with_items: "{{ package_installation_result.results }}"
   when: ansible_pkg_mgr == 'apt'
 
