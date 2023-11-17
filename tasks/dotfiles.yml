@@ -1,9 +1,3 @@
-- name: Installing stow
-  apt: name=stow
-  tags:
-    - install
-    - dotfiles
-    - stow
 - name: Cloning .dotfiles
   ansible.builtin.git:
     repo: 'git@github.com:Sam-Hobson/.dotfiles.git'
@@ -12,10 +6,10 @@
     update: yes
     accept_hostkey: yes
     version: master
-  tags:
-    - install
-    - dotfiles
-    - stow
+
+
+# TODO: Add or detect different versions
+
 - name: Stow dotfiles
   shell: cd $HOME/.dotfiles && ./fedora
   tags:

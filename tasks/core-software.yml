@@ -22,11 +22,8 @@
   with_items:
     - cmake
     - lolcat
-    - exa
-    - bat
     - curl
     - htop
-    - tree
     - unzip
     - python3
     - fzf

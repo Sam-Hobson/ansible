@@ -1,0 +1,47 @@
+# TODO: Chrome
+
+
+- name: Installing packages
+  become: yes
+  ansible.builtin.package:
+    name: {{ item }}
+  with_items:
+    - wireshark
+    - xclip
+    - exa
+    - bat
+    - firefox
+
+
+# Bitwarden (for linux)
+- name: Download Bitwarden (may or may not be in path)
+  become: yes
+  get_url:
+    url: https://vault.bitwarden.com/download/?app=desktop&platform=linux
+    dest: /usr/bin/bitwarden
+    mode: '0755'
+  when: "'Linux' in ansible_distribution"
+
+- name: Check if application profile exists
+  become: yes
+  stat:
+    path: /usr/share/applications/bitwarden.desktop
+  register: bitwarden_path
+  when: "'Linux' in ansible_distribution"
+
+- name: Add Bitwarden application profile
+  become: yes
+  blockinfile:
+    path: /usr/share/applications/bitwarden.desktop
+    block: |
+      [Desktop Entry]
+      Name=Bitwarden
+      GenericName=Password Manager
+      Comment=Manage your passwords
+      Exec=bitwarden
+      # Icon=/usr/share/icons/bitwarden.png
+      Terminal=false
+      Type=Application
+      Keywords=password;
+    create: yes
+  when: not bitwarden_path.stat.exists and 'Linux' in ansible_distribution

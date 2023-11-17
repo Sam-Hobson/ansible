@@ -24,3 +24,4 @@
   tasks:
     - include_tasks: tasks/terminal.yml
     - include_tasks: tasks/core-software.yml
+    - include_tasks: tasks/tools.yml
