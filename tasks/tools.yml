@@ -1,7 +1,7 @@
 # TODO: Chrome
 
 
-- name: Installing packages
+- name: Installing extra packages
   become: yes
   ansible.builtin.package:
     name: "{{ item }}"
@@ -44,4 +44,4 @@
       Type=Application
       Keywords=password;
     create: yes
-  when: not bitwarden_path.stat.exists and 'Linux' in ansible_distribution
+  when: "'Linux' in ansible_distribution and not bitwarden_path.stat.exists"
