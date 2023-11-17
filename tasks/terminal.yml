@@ -15,7 +15,7 @@
 
 - name: Make zsh default shell (reboot required)
   ansible.builtin.expect:
-    command: "chsh -s $(which zsh)"
+    command: chsh -s $(which zsh)
     responses:
       'Password: ': '{{ user_pass }}'
 
