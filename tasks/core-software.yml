@@ -1,0 +1,20 @@
+
+- name: Apt system packages
+  become: yes
+  apt:
+    name: ["build-essential", "pkg-config", "libpthread-stubs0-dev", "libtool", "libtool-bin", "gettext", "lua5.4"]
+  when: ansible_pkg_mgr == 'apt'
+
+
+- name: Generic system packages
+  become: yes
+  ansible.builtin.package:
+    name: ["cmake", "lolcat", "exa", "bat", "curl", "htop", "tree", "unzip", "python3", "fzf", "fd-find", "ripgrep"]
+
+
+- name: Red hat system packages
+  become: yes
+  ansible.builtin.package:
+    name: ["lua"]
+  when: ansible_pkg_mgr == 'yum' or ansible_pkg_mgr == 'dnf'
+
