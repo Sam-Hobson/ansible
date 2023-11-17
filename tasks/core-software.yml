@@ -9,7 +9,7 @@
 - name: Generic system packages
   become: yes
   ansible.builtin.package:
-    name: ["cmake", "lolcat", "exa", "bat", "curl", "htop", "tree", "unzip", "python3", "fzf", "fd-find", "ripgrep", "stow", "parallel"]
+    name: ["cmake", "lolcat", "exa", "bat", "curl", "htop", "tree", "unzip", "python3", "fzf", "fd-find", "ripgrep", "stow", "parallel", "expect"]
 
 
 - name: Red hat system packages
