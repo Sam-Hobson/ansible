@@ -26,4 +26,5 @@
     # - include_tasks: tasks/core-software.yml
     - include_tasks: tasks/tools.yml
     - include_tasks: tasks/icons.yml
+    - include_tasks: tasks/neovim.yml
 
