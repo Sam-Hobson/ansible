@@ -22,9 +22,10 @@
       when: ansible_pkg_mgr == 'yum' or ansible_pkg_mgr == 'dnf'
 
   tasks:
-    # - include_tasks: tasks/terminal.yml
-    # - include_tasks: tasks/core-software.yml
+    - include_tasks: tasks/terminal.yml
+    - include_tasks: tasks/core-software.yml
     - include_tasks: tasks/tools.yml
     - include_tasks: tasks/icons.yml
     - include_tasks: tasks/neovim.yml
+    - include_tasks: tasks/dotfiles.yml
 

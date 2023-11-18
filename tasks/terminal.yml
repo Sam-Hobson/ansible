@@ -44,3 +44,4 @@
     cmd: /tmp/starship_install.sh --yes
     executable: /bin/sh
   become: yes
+

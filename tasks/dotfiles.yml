@@ -12,7 +12,3 @@
 
 - name: Stow dotfiles
   shell: cd $HOME/.dotfiles && ./fedora
-  tags:
-    - install
-    - dotfiles
-    - stow
