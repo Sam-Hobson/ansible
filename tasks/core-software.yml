@@ -12,6 +12,8 @@
     - gettext
     - lua5.4
   when: ansible_pkg_mgr == 'apt'
+  tags:
+    - system
 
 
 
@@ -32,6 +34,8 @@
     - stow
     - parallel
     - expect
+  tags:
+    - system
 
 
 - name: Red hat system packages
@@ -41,4 +45,7 @@
   with_items:
     - lua
   when: ansible_pkg_mgr == 'yum' or ansible_pkg_mgr == 'dnf'
+  tags:
+    - system
+    - lua
 

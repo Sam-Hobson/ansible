@@ -3,6 +3,8 @@
     repo: 'https://github.com/Sam-Hobson/.dotfiles.git'
     dest: "{{ lookup('env', 'HOME') }}/.dotfiles"
     recursive: yes
+  tags:
+    - dotfiles
 
 
 # TODO: Add or detect different versions

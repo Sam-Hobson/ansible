@@ -12,6 +12,8 @@
     - bat
     - firefox
     - tmux
+  tags:
+    - tools
 
 
 # Bitwarden (for linux)
@@ -22,6 +24,9 @@
     dest: /usr/bin/bitwarden
     mode: '0755'
   when: "'Linux' in ansible_system"
+  tags:
+    - bitwarden
+    - linux
 
 - name: Check if application profile exists
   become: yes
@@ -29,6 +34,9 @@
     path: /usr/share/applications/bitwarden.desktop
   register: bitwarden_path
   when: "'Linux' in ansible_system"
+  tags:
+    - bitwarden
+    - linux
 
 - name: Add Bitwarden application profile
   become: yes
@@ -46,4 +54,6 @@
       Keywords=password;
     create: yes
   when: "'Linux' in ansible_system and not bitwarden_path.stat.exists"
-
+  tags:
+    - bitwarden
+    - linux
