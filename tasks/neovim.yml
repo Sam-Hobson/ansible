@@ -3,21 +3,29 @@
   become: yes
   ansible.builtin.package:
     name: "neovim"
+  tags:
+    - nvim
 
 
 - name: Install packer
   ansible.builtin.git:
     repo: "https://github.com/wbthomason/packer.nvim"
     dest: "{{ lookup('env', 'HOME') }}/.local/share/nvim/site/pack/packer/start/packer.nvim"
+  tags:
+    - nvim
 
 
 - name: Neovim Plugin Development 1
   become: yes
   ansible.builtin.package:
     name: luarocks
+  tags:
+    - nvim
 
 
 - name: Neovim Plugin Development 2 luacheck
   become: yes
   shell: luarocks install luacheck
+  tags:
+    - nvim
 

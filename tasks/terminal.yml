@@ -6,31 +6,49 @@
   ansible.builtin.package:
     name: "kitty"
     state: present
+  tags:
+    - system
+    - term
 
 - name: Download zsh
   become: yes
   ansible.builtin.package:
     name: "zsh"
     state: present
+  tags:
+    - term
+    - shell
 
 - name: Make zsh default shell (reboot required)
   become: yes
   shell: chsh -s $(which zsh)
+  tags:
+    - term
+    - shell
 
 
 - name: Install Oh-My-Zsh
   become_user: sam
   shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
+  tags:
+    - term
+    - shell
 
 - name: Install zsh-autosuggestions
   ansible.builtin.git:
     repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
     dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
+  tags:
+    - term
+    - shell
 
 - name: Install zsh-syntax-highlighting
   ansible.builtin.git:
     repo: 'https://github.com/zdharma-continuum/fast-syntax-highlighting.git'
     dest: "~/.oh-my-zsh/plugins/fast-syntax-highlighting"
+  tags:
+    - term
+    - shell
 
 
 - name: Download starship
@@ -38,10 +56,16 @@
     url: https://starship.rs/install.sh
     dest: /tmp/starship_install.sh
     mode: '0755'
+  tags:
+    - term
+    - shell
 
 - name: Install starship
   shell:
     cmd: /tmp/starship_install.sh --yes
     executable: /bin/sh
   become: yes
+  tags:
+    - term
+    - shell
 

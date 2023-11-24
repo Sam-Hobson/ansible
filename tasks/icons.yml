@@ -5,6 +5,10 @@
     path: "/usr/share/icons/myCustomIcons"
     state: directory
   when: "'Linux' in ansible_system"
+  tags:
+    - linux
+    - icons
+    - bitwarden
 
 
 - name: Bitwarden icon
@@ -14,5 +18,8 @@
     dest: /usr/share/icons/myCustomIcons/bitwarden.png
     mode: '0755'
   when: "'Linux' in ansible_system"
+  tags:
+    - linux
+    - bitwarden
 
 
