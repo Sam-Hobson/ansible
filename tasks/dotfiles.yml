@@ -5,7 +5,5 @@
     recursive: yes
 
 
-# TODO: Add or detect different versions
-
-- name: Stow dotfiles
-  shell: cd $HOME/.dotfiles && ./fedora
+# - name: Stow dotfiles
+#   shell: cd $HOME/.dotfiles && ./fedora
