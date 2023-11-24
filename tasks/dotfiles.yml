@@ -7,10 +7,5 @@
     - dotfiles
 
 
-<<<<<<< HEAD
-=======
-# TODO: Add or detect different versions
-
->>>>>>> refs/remotes/origin/main
 # - name: Stow dotfiles
 #   shell: cd $HOME/.dotfiles && ./fedora
