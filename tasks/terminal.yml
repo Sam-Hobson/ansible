@@ -50,6 +50,14 @@
     - term
     - shell
 
+- name: Install zsh-completions
+  ansible.builtin.git:
+    repo: "https://github.com/zsh-users/zsh-completions"
+    dest: "~/.oh-my-zsh/custom/plugins/zsh-completions"
+  tags:
+    - term
+    - shell
+
 
 - name: Download starship
   get_url:
