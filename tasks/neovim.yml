@@ -6,7 +6,6 @@
   tags:
     - nvim
 
-
 - name: Install packer
   ansible.builtin.git:
     repo: "https://github.com/wbthomason/packer.nvim"
@@ -14,14 +13,12 @@
   tags:
     - nvim
 
-
 - name: Neovim Plugin Development 1
   become: yes
   ansible.builtin.package:
     name: luarocks
   tags:
     - nvim
-
 
 - name: Neovim Plugin Development 2 luacheck
   become: yes

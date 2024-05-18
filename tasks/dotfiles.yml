@@ -1,3 +1,4 @@
+
 - name: Cloning .dotfiles
   ansible.builtin.git:
     repo: 'https://github.com/Sam-Hobson/.dotfiles.git'
@@ -6,6 +7,3 @@
   tags:
     - dotfiles
 
-
-# - name: Stow dotfiles
-#   shell: cd $HOME/.dotfiles && ./fedora

@@ -15,33 +15,6 @@
   tags:
     - tools
 
-- name: Create ripgrep auto-completion directory
-  ansible.builtin.file:
-    path: ~/.oh-my-zsh/custom/plugins/ripgrep/src/
-    state: directory
-  tags:
-    - ripgrep
-    - tools
-
-- name: Create ripgrep auto-completion
-  shell:
-    cmd: $(which rg) --generate=complete-zsh > ~/.oh-my-zsh/custom/plugins/ripgrep/src/_ripgrep
-    executable: /bin/sh
-  tags:
-    - ripgrep
-    - tools
-
-- name: Create ripgrep auto-completion basic config file
-  blockinfile:
-    path: ~/.oh-my-zsh/custom/plugins/ripgrep/ripgrep.plugin.zsh
-    block: |
-      fpath+="${0:A:h}/src"
-    create: yes
-  tags:
-    - ripgrep
-    - tools
-
-
 # Bitwarden (for linux)
 - name: Download Bitwarden (may or may not be in path)
   become: yes
